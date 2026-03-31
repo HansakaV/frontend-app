@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../axiosConfig'
 import { Plus, Trash2, Users } from 'lucide-react'
 
 export default function LabourManager() {
@@ -8,7 +8,7 @@ export default function LabourManager() {
 
   const fetchLabours = async () => {
     try {
-      const resp = await axios.get('/api/labours')
+      const resp = await api.get('/labours')
       setLabours(resp.data)
     } catch (e) {
       console.error('Failed to fetch labours', e)
@@ -20,7 +20,7 @@ export default function LabourManager() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post('/api/labours', form)
+      await api.post('/labours', form)
       setForm({ name: '', role: 'Driver', contact: '', email: '' })
       fetchLabours()
     } catch (e) { console.error('Failed to add labour', e) }

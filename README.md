@@ -3,9 +3,9 @@
 Modern React application for the Bus Depot Management System.
 
 ## Student Information
-- **Name:** [STUDENT_NAME]
-- **Student Number:** [STUDENT_NUMBER]
-- **GCP Project ID:** [GCP_PROJECT_ID]
+- **Name:** Mahesh Hansaka
+- **Student Number:** 2301691104
+- **GCP Project ID:** project-a328dfec-018f-4204-865
 - **Deployed URL:** [PUBLIC_URL]
 
 ## Description

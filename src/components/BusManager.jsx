@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../axiosConfig'
 import { Plus, Trash2, Truck, Image as ImageIcon } from 'lucide-react'
 
 export default function BusManager() {
@@ -9,7 +9,7 @@ export default function BusManager() {
 
   const fetchBuses = async () => {
     try {
-      const resp = await axios.get('/api/buses')
+      const resp = await api.get('/buses')
       setBuses(resp.data)
     } catch (e) { console.error('Failed to fetch buses', e) }
   }
@@ -25,7 +25,7 @@ export default function BusManager() {
     formData.append('image', image)
 
     try {
-      await axios.post('/api/buses', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+      await api.post('/buses', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
       setForm({ plateNumber: '', model: '', capacity: 40 })
       setImage(null)
       fetchBuses()
@@ -73,7 +73,7 @@ export default function BusManager() {
               <button 
                 className="btn btn-danger" 
                 style={{marginTop: '1rem', width: '100%'}} 
-                onClick={() => axios.delete(`/api/buses/${b.id}`).then(fetchBuses)}
+                onClick={() => api.delete(`/buses/${b.id}`).then(fetchBuses)}
               >
                 <Trash2 size={16} /> Retire Bus
               </button>

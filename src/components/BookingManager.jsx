@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../axiosConfig'
 import { Plus, Trash2, Calendar } from 'lucide-react'
 
 export default function BookingManager() {
@@ -10,8 +10,8 @@ export default function BookingManager() {
   const fetchAll = async () => {
     try {
       const [bookData, busData] = await Promise.all([
-        axios.get('/api/bookings'),
-        axios.get('/api/buses')
+        api.get('/bookings'),
+        api.get('/buses')
       ])
       setBookings(bookData.data)
       setBuses(busData.data)
@@ -23,7 +23,7 @@ export default function BookingManager() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post('/api/bookings', form)
+      await api.post('/bookings', form)
       setForm({ busId: '', customerName: '', seatNumber: '', journeyDate: '' })
       fetchAll()
     } catch (e) { console.error('Failed to add booking', e) }
@@ -79,7 +79,7 @@ export default function BookingManager() {
               <td>{b.seatNumber}</td>
               <td>{b.journeyDate}</td>
               <td>
-                <button className="btn btn-danger" onClick={() => axios.delete(`/api/bookings/${b.id}`).then(fetchAll)}>
+                <button className="btn btn-danger" onClick={() => api.delete(`/bookings/${b.id}`).then(fetchAll)}>
                   <Trash2 size={16} />
                 </button>
               </td>
