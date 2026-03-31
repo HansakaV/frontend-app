@@ -5,8 +5,8 @@ Modern React application for the Bus Depot Management System.
 ## Student Information
 - **Name:** Mahesh Hansaka
 - **Student Number:** 2301691104
-- **GCP Project ID:** project-a328dfec-018f-4204-865
-- **Deployed URL:** [PUBLIC_URL]
+- **GCP Project ID:** bus-depot-management-491905 
+- **Deployed URL:** https://frontend-app-eca.vercel.app/
 
 ## Description
 The frontend provides a dashboard to manage labours, buses, and bookings. It communicates with the backend services through the API Gateway.
